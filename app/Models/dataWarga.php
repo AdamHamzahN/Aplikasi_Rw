@@ -13,15 +13,14 @@ class dataWarga extends Model
     protected  $fillable = [
         'nik',
         'nama',
-        'jns_kelamin', 
+        'jenis_kelamin', 
         'tempat_lahir',
         'tgl_lahir', 
-        'ayah',
-        'ibu',
+        'agama',
         'pekerjaan', 
         'alamat', 
         'rt', 
         'kontak'
     ];
-    public $timestamps= false;
+    public $timestamps= true;
 }

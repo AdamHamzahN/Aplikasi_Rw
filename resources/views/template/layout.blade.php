@@ -26,17 +26,20 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <a href="/datawarga/" class="nav_logo"> <i class='bi bi-buildings nav_logo-icon'></i>
+                <a href="admin/dashboard/" class="nav_logo"> <i class='bi bi-buildings nav_logo-icon'></i>
                     <span class="nav_logo-name">RW 09</span> </a>
                 <div class="nav_list">
-                    <a href="/datawarga/" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span
-                            class="nav_name">Data Warga</span> </a>
+                    <a href="/admin/dashboard/" class="nav_link {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
+                        <i class="bi bi-grid-fill"></i><span class="nav_name">Dashboard</span> </a>
 
-                    <a href="/pengurusrw/" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span
-                            class="nav_name">Pengurus Rw</span> </a>
+                    <a href="/admin/datawarga/" class="nav_link {{ Request::is('admin/datawarga*') ? 'active' : '' }}">
+                        <i class="bi bi-database"></i><span class="nav_name">Data Warga</span> </a>
 
-                    <a href="/aduanwarga/" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span
-                            class="nav_name">Aduan Warga</span></a>
+                    <a href="/admin/pengurusrw/" class="nav_link {{ Request::is('admin/pengurusrw*') ? 'active' : '' }}">
+                        <i class='bx bx-user nav_icon'></i> <span class="nav_name">Daftar Pengurus Rw</span> </a>
+
+                    <a href="/admin/jabatan/" class="nav_link {{ Request::is('admin/jabatan*') ? 'active' : '' }}">
+                        <i class='bx bx-user nav_icon'></i> <span class="nav_name">Daftar Jabatan</span> </a>
 
                 </div>
             </div>

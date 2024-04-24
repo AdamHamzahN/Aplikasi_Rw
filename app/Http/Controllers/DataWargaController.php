@@ -5,16 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\dataWarga;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Yajra\DataTables\DataTables;
 
 class DataWargaController extends Controller
 {
     //
+    public $datawarga;
+
+    public function __construct(){
+        $this->datawarga = new dataWarga();
+    }
     public function index()
     {
         $data = [
             'data_warga' => dataWarga::all()
         ];
-        return view('datawarga.index', $data);
+        return view('admin.datawarga.index', $data);
     }
 
     public function detail(Request $request)
@@ -24,12 +30,12 @@ class DataWargaController extends Controller
             'warga' => dataWarga::where('nik', $request->nik)->first()
 
         ];
-        return view('datawarga.detail',$data);
+        return view('admin.datawarga.detail',$data);
     }
 
     public function formTambah()
     {
-        return view('datawarga.tambah');
+        return view('admin.datawarga.tambah');
     }
 
 
@@ -38,11 +44,10 @@ class DataWargaController extends Controller
         $data = $request->validate([
             'nik'=>['required'],
             'nama'=>['required'],
-            'jns_kelamin'=>['required'], 
+            'jenis_kelamin'=>['required'], 
             'tempat_lahir'=>['required'],
             'tgl_lahir'=>['date'], 
-            'ayah'=>['required'],
-            'ibu'=>['required'],
+            'agama'=>['required'],
             'pekerjaan'=>['nullable'], 
             'alamat'=>['required'], 
             'rt'=>['required'], 
@@ -85,7 +90,7 @@ class DataWargaController extends Controller
             'warga' => dataWarga::where('nik', $request->nik)->first()
 
         ];
-        return view('datawarga.edit',$data);
+        return view('admin.datawarga.edit',$data);
     }
 
     public function hapus(Request $request,Response $response){
@@ -118,6 +123,16 @@ class DataWargaController extends Controller
     
        }
     
+       public function dataWarga(Request $request){
+        /**
+         * method ini sbg endpoint API untuk 
+         * Datatable serverside
+         */
+         if($request->ajax()):
+            $data = $this->datawarga->get();
+            return DataTables::of($data)->toJson();
+         endif;
+    }
     
     }
 
