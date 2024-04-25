@@ -35,11 +35,15 @@
                     <a href="/admin/datawarga/" class="nav_link {{ Request::is('admin/datawarga*') ? 'active' : '' }}">
                         <i class="bi bi-database"></i><span class="nav_name">Data Warga</span> </a>
 
-                    <a href="/admin/pengurusrw/" class="nav_link {{ Request::is('admin/pengurusrw*') ? 'active' : '' }}">
+                    <a href="/admin/pengurusrw/"
+                        class="nav_link {{ Request::is('admin/pengurusrw*') ? 'active' : '' }}">
                         <i class='bx bx-user nav_icon'></i> <span class="nav_name">Daftar Pengurus Rw</span> </a>
 
                     <a href="/admin/jabatan/" class="nav_link {{ Request::is('admin/jabatan*') ? 'active' : '' }}">
                         <i class='bx bx-user nav_icon'></i> <span class="nav_name">Daftar Jabatan</span> </a>
+
+                    <a href="/admin/logs/" class="nav_link {{ Request::is('admin/logs*') ? 'active' : '' }}">
+                        <i class='bi bi-clock-history'></i> <span class="nav_name">Logs</span> </a>
 
                 </div>
             </div>

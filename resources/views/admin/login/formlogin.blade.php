@@ -43,7 +43,7 @@
                     <div class="card-header text-center">
                         <h1>Login Admin</h1>
                     </div>
-                    <form method="post" id="check" name="check" action="{{ url('login/check') }} ">
+                    <form method="post" id="check" name="check" action="{{ url('admin/login/check') }} ">
                         <div class="card-body">
                             <div class="logo">
                                 <img src="{{ asset('image/logo_rw.png') }}" alt="Logo" width="300">
@@ -61,10 +61,11 @@
                                 @csrf
                             </div>
                         </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
                     </form>
-                    <div class="card-footer text-center">
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </div>
+
                 </div>
             </div>
         </div>

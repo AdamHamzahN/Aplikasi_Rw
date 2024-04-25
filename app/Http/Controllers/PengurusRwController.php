@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\jabatan;
 use App\Models\pengurusRw;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class PengurusRwController extends Controller
     //
     public function index(){
         $data =[
-            'daftar_pengurus' => pengurusRw::all()
+            'pejabats' => pengurusRw::all(),
+            'jabatans'=> jabatan::all()
         ];
 
              return view('admin.pengurusrw.index',$data);

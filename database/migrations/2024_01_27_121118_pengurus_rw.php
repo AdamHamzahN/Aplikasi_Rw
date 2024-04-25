@@ -13,14 +13,10 @@ return new class extends Migration
     {
          Schema::create('pengurus_rw', function (Blueprint $table) {
             $table->integer('id_pengurus_rw', 11, true, false)->nullable(false);
-            $table->string('nik', 20,false, false)->index('nik');
+            $table->string('nama',100,false, false)->nullable(false);
             $table->integer('id_jabatan')->index('id_jabatan');
-            $table->timestamps();
-
-            $table->foreign('nik')->on('data_wargas')
-                ->references('nik')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->timestamp('dibuat_pada')->useCurrent();
+            $table->timestamp('diubah_pada')->useCurrent();
 
             $table->foreign('id_jabatan')->on('jabatans')
                 ->references('id_jabatan')
