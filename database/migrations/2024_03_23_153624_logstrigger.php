@@ -13,9 +13,19 @@ return new class extends Migration
     public function up(): void
     {
         DB::unprepared('
-        CREATE TRIGGER TRlogs AFTER INSERT ON data_wargas FOR EACH ROW
+        CREATE TRIGGER TRlogsinsert AFTER INSERT ON data_wargas FOR EACH ROW
         BEGIN
             INSERT INTO logs (pesan) VALUES (CONCAT("data ", NEW.nama, " ditambahkan pada tanggal ", CURRENT_TIMESTAMP()));
+        END;
+
+        CREATE TRIGGER TRlogsupdate AFTER UPDATE ON data_wargas FOR EACH ROW
+        BEGIN
+            INSERT INTO logs (pesan) VALUES (CONCAT("data ", NEW.nama, " diupdate pada tanggal ", CURRENT_TIMESTAMP()));
+        END;
+
+        CREATE TRIGGER TRlogsdelete BEFORE DELETE ON data_wargas FOR EACH ROW
+        BEGIN
+            INSERT INTO logs (pesan) VALUES (CONCAT("data ", OLD.nama, " dihapus pada tanggal ", CURRENT_TIMESTAMP()));
         END;
     ');
     }
