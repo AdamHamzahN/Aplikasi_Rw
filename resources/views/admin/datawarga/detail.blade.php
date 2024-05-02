@@ -10,8 +10,8 @@
                 <div class="card-body">
                     <p class="card-text"><strong>NIK:</strong> {{ $warga->nik }}</p>
                     <p class="card-text"><strong>Nama Lengkap:</strong> {{ $warga->nama }}</p>
-                    <p class="card-text"><strong>Jenis Kelamin:</strong> {{ $warga->jns_kelamin }}</p>
-                    <p class="card-text"><strong>Tempat/Tanggal Lahir:</strong> {{ $warga->tempat_lahir }},{{ $warga->tgl_lahir }}</p>
+                    <p class="card-text"><strong>Jenis Kelamin:</strong> {{ $warga->jenis_kelamin }}</p>
+                    <p class="card-text"><strong>Tempat/Tanggal Lahir:</strong> {{ $warga->tempat_lahir }},{{ $warga->tanggal_lahir }}</p>
                     <p class="card-text"><strong>Agama:</strong> {{ $warga->agama }}</p>
                     <p class="card-text"><strong>Pekerjaan:</strong> {{ $warga->pekerjaan }}</p>
                     <p class="card-text"><strong>Alamat:</strong> {{ $warga->alamat }}</p>

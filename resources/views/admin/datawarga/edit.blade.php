@@ -35,9 +35,9 @@
                                 <input type="text" name="tempat_lahir" id="tempat_lahir"class="form-control"
                                     value="{{ $warga->tempat_lahir }}" required /><br>
 
-                                <label for="tgl_lahir">Tanggal Lahir :</label>
-                                <input type="date" name="tgl_lahir" id="tgl_lahir"class="form-control"
-                                    value="{{ $warga->tgl_lahir }}" required /><br>
+                                <label for="tanggal_lahir">Tanggal Lahir :</label>
+                                <input type="date" name="tanggal_lahir" id="tanggal_lahir"class="form-control"
+                                    value="{{ $warga->tanggal_lahir }}" required /><br>
 
                                 <label for="agama">Agama :</label>
                                 <select class="form-control" name="agama" id="agama" value="{{ $warga->agama }}"

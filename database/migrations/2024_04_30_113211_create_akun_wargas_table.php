@@ -11,22 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('pengurus_rw', function (Blueprint $table) {
-            $table->integer('id_pengurus_rw', 11, true, false)->nullable(false);
+        Schema::create('akun_wargas', function (Blueprint $table) {
+            $table->integer('id_akun_wargas', true)->nullable(false);
             $table->string('nik',20,false, false)->index('nik');
-            $table->integer('id_jabatan')->index('id_jabatan');
-            $table->timestamps();
+            $table->text('password',10)->nullable(false);
 
             $table->foreign('nik')->on('data_wargas')
                 ->references('nik')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-
-            $table->foreign('id_jabatan')->on('jabatans')
-                ->references('id_jabatan')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-         });
+        });
     }
 
     /**
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengurus_rw');
+        Schema::dropIfExists('akun_wargas');
     }
 };

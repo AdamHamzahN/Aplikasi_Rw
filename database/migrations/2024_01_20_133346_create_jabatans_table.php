@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('jabatans', function (Blueprint $table) {
             $table->integer('id_jabatan',true,false)->nullable(false);
             $table->string('nama_jabatan',100)->nullable(false);
-            $table->timestamp('dibuat_pada')->useCurrent();
-            $table->timestamp('diubah_pada')->useCurrent();
+            $table->timestamps();
+
         });
     }
 

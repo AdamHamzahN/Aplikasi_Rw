@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::unprepared('DROP TRIGGER "TRlogs"');
+        DB::unprepared('DROP TRIGGER "TRlogsinsert","TRlogsupdate","TRlogsdelete"');
     }
 };

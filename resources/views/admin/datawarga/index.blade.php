@@ -96,8 +96,8 @@
                     name: 'jenis_kelamin',
                 },
                 {
-                    data: 'tgl_lahir',
-                    name: 'tgl_lahir',
+                    data: 'tanggal_lahir',
+                    name: 'tanggal_lahir',
                 },
                 {
                     data: 'alamat',

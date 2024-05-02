@@ -42,3 +42,55 @@
         @endforeach
     </div>
 @endsection
+
+@section('footer')
+$('.DataTable tbody').on('click', '.btnHapusBarang', function(eventHapus) {
+    let idBarang = $(this).closest('.btnHapusBarang').attr('attr-id');
+    Swal.fire({
+        title: "Yakin Hapus data?",
+        text: "Data Yang Sudah DiHapus Tidak Akan Bisa Kembali",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Setuju,Hapus Data"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let hapusData = {
+                'id_barang': idBarang,
+                '_token': '{{ csrf_token() }}'
+            };
+            axios.post('{{ url('barang/hapus') }}', hapusData).then(resp => {
+                if (resp.data.status == 'success') {
+                    //tampilkan pop up berhasil;
+                    Swal.fire({
+                        title: "berhasil!",
+                        text: resp.data.pesan,
+                        icon: "success"
+                    }).then(() => {
+                        //close modal
+                        modal.hide();
+                        //reload tabel
+                        table.ajax.reload();
+
+                    });
+                } else {
+                    //tampilkan pop up gagal
+                    Swal.fire({
+                        title: "GAGAL",
+                        text: resp.data.pesan,
+                        icon: "error"
+                    });
+                }
+            });
+        } else {
+            alert('data tidak boleh kosong');
+        }
+    })
+    // Swal.fire({
+    //     title: "Deleted!",
+    //     text: "Your file has been deleted.",
+    //     icon: "success"
+    // });
+});
+@endsection

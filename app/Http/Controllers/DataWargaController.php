@@ -46,7 +46,7 @@ class DataWargaController extends Controller
             'nama'=>['required'],
             'jenis_kelamin'=>['required'], 
             'tempat_lahir'=>['required'],
-            'tgl_lahir'=>['date'], 
+            'tanggal_lahir'=>['date'], 
             'agama'=>['required'],
             'pekerjaan'=>['nullable'], 
             'alamat'=>['required'], 

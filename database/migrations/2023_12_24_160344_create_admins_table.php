@@ -15,6 +15,7 @@ return new class extends Migration
             $table->integer('id_admin',true,false)->nullable(false);
             $table->text('admin',50)->nullable(false);
             $table->text('password',10)->nullable(false);
+            $table->timestamps();
             
         });
     }

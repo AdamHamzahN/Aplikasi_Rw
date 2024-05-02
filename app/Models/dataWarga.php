@@ -15,7 +15,7 @@ class dataWarga extends Model
         'nama',
         'jenis_kelamin', 
         'tempat_lahir',
-        'tgl_lahir', 
+        'tanggal_lahir', 
         'agama',
         'pekerjaan', 
         'alamat', 
