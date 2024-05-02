@@ -70,6 +70,7 @@ Route::prefix('/admin')->group(function () {
      */
     Route::prefix('/jabatan')->group(function () {
         Route::get('/', [JabatanController::class, 'index'])->name('jabatan.index');
+        Route::get('/data', [JabatanController::class, 'dataJabatan'])->name('jabatan.data');
         Route::get('/tambah', [JabatanController::class, 'tambah'])->name('jabatan.tambah');
         Route::post('/simpan', [JabatanController::class, 'simpan'])->name('jabatan.simpan');
         Route::get('/edit/{id_jabatan}', [JabatanController::class, 'formEdit'])->name('jabatan.edit');

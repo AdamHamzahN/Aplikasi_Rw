@@ -4,6 +4,7 @@
         <div class="col-lg-12">
             <div class="col-lg-12 text-center mb-4 background-blue mt-10">
                 <h1>Daftar Jabatan Pengurus Rw 09</h1>
+                <h2>Kota baru Bekasi Barat</h2>
             </div>
 
             <div class="col-lg-12 mb-3">
@@ -12,14 +13,11 @@
                 </a>
             </div>
 
-            <table class="table table-hovered table-bordered">
+            <table class="table DataTable table-hovered table-bordered">
                 <thead>
                     <tr>
                         <th>
                             Aksi
-                        </th>
-                        <th>
-                            Id Jabatan
                         </th>
                         <th>
                             Nama Jabatan
@@ -35,7 +33,7 @@
                 <tbody>
                     @foreach ($daftar_jabatan as $jabatan)
                         <tr>
-                            <td>
+                            {{-- <td>
                                 <a href="{{ url('/admin/jabatan/edit/' . $jabatan->id_jabatan) }}">
                                     <button class="btn btn-primary"><i class="bi bi-pencil-square"></i>Edit</button>
                                 </a>
@@ -45,7 +43,7 @@
                             <td>{{ $jabatan->id_jabatan }}</td>
                             <td>{{ $jabatan->nama_jabatan }}</td>
                             <td>{{ $jabatan->created_at }}</td>
-                            <td>{{ $jabatan->updated_at }}</td>
+                            <td>{{ $jabatan->updated_at }}</td> --}}
                         </tr>
                     @endforeach
                 </tbody>
@@ -56,6 +54,35 @@
 
 @section('footer')
     <script type="module">
+        var table = $('.DataTable').DataTable({
+            responsive: true,
+            processing: true,
+            ServerSide: true,
+            ajax: "{!! route('jabatan.data') !!}",
+            columns: [{
+                    // data: null,
+                    render: function(data, type, row) {
+                        return '<a href="/admin/jabatan/edit/' + row.id_jabatan +
+                            '"><button class="btn btn-primary"><i class="bi bi-pencil-square"></i>Edit</button></a>' +
+                            '<a href="/admin/jabatan/hapus/' + row.id_jabatan +
+                            '"><button class="btn btn-danger hpsBtn" attr-id="' + row.id_jabatan +
+                            '"><i class="bi bi-trash"></i>Hapus</button></a>';
+                    }
+                },
+                {
+                    data: 'nama_jabatan',
+                    name: 'nama_jabatan',
+                },
+                {
+                    data: 'created_at',
+                    name: 'created_at',
+                },
+                {
+                    data: 'updated_at',
+                    name: 'updated_at',
+                }
+            ]
+        });
         $('.table tbody').on('click', '.hpsBtn', function(event) {
             event.preventDefault();
             event.stopImmediatePropagation();

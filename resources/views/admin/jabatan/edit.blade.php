@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div>
-            <a href="{{ url('/pengurusrw/jabatan/') }}" class="btn btn-info btn-lg mx-auto kembali">Kembali</a>
+            <a href="{{ url('admin/jabatan/') }}" class="btn btn-info btn-lg mx-auto kembali">Kembali</a>
         </div>
 
         <div class="col-lg-6 mx-auto">

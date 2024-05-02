@@ -40,7 +40,7 @@
 
                     <a href="/admin/pengurusrw/"
                         class="nav_link {{ Request::is('admin/pengurusrw*') ? 'active' : '' }}">
-                        <i class='bi bi-person-fill-check'></i> <span class="nav_name">Daftar Pengurus Rw</span> </a>
+                        <i class='bi bi-person-circle'></i> <span class="nav_name">Daftar Pengurus Rw</span> </a>
 
                     <a href="/admin/jabatan/" class="nav_link {{ Request::is('admin/jabatan*') ? 'active' : '' }}">
                         <i class='bi bi-person-badge'></i> <span class="nav_name">Daftar Jabatan</span> </a>

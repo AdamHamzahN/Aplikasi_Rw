@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->text('pesan')->nullable(false);
-            $table->timestamp('update')->useCurrent();
+            $table->timestamp('tanggal')->useCurrent();
         });
     }
 

@@ -4,6 +4,7 @@
         <div class="col-lg-12">
             <div class="col-lg-12 text-center mb-4 background-blue mt-10">
                 <h1>Data Warga RW 09</h1>
+                <h2>Kota baru Bekasi Barat</h2>
             </div>
 
             <div class="col-lg-12 mb-3">
@@ -130,7 +131,7 @@
                                 text: response.data.pesan,
                                 icon: "success"
                             }).then(() => {
-                                window.location.reload();
+                                table.ajax.reload();
                             })
                         } else {
                             alert(response.data.pesan);

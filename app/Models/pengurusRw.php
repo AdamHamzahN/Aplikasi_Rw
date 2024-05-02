@@ -11,6 +11,6 @@ class pengurusRw extends Model
     protected $table = 'pengurus_rw';
     protected $primarykey = 'id_pengurus_rw';
     protected $fillable =['nik','id_jabatan'];
-    public $timestamps = false;
+    public $timestamps = true;
 
 }

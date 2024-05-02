@@ -6,9 +6,10 @@ use App\Models\dataWarga;
 use App\Models\jabatan;
 use App\Models\pengurusRw;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class PengurusRwController extends Controller
-{
+{   
     //
     public function index()
     {
@@ -62,5 +63,4 @@ class PengurusRwController extends Controller
         endif;
     }
 
-    
 }
