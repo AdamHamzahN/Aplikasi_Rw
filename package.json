@@ -16,8 +16,11 @@
     "dependencies": {
         "bootstrap-icons": "^1.11.3",
         "bootstrap5": "^1.1.9",
+        "boxicons": "^2.1.4",
         "datatables.net-bs5": "^1.13.8",
         "jquery": "^3.7.1",
+        "module": "^1.2.5",
+        "node": "^22.0.0",
         "select2": "^4.1.0-rc.0",
         "sweetalert2": "^11.10.4"
     }

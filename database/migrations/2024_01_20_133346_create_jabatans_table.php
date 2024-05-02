@@ -15,7 +15,6 @@ return new class extends Migration
             $table->integer('id_jabatan',true,false)->nullable(false);
             $table->string('nama_jabatan',100)->nullable(false);
             $table->timestamps();
-
         });
     }
 

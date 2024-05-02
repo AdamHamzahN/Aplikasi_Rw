@@ -10,7 +10,7 @@
                 <div class="card-header text-center">
                     <h1>Edit Jabatan Baru</h1><br>
                 </div>
-                <form method="post" name="formTambah" action="{{ url('pengurusrw/jabatan/simpan') }} ">
+                <form method="post" name="formTambah" action="{{ url('admin/jabatan/simpan') }} ">
                     <div class="card-body">
                         <div class="col-lg-12">
                             <div class="form-group">
