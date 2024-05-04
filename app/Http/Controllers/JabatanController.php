@@ -107,8 +107,7 @@ class JabatanController extends Controller
          */
         if ($request->ajax()) :
             $data = $this->data_jabatan->get();
-
-
+            
             return DataTables::of($data)
                 ->editColumn('created_at', function ($row) {
                     return $row->created_at->format('Y-m-d H:i:s');

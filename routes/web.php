@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AduanwargaController;
+use App\Http\Controllers\AkunWargaController;
 use App\Http\Controllers\DataWargaController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PengurusRwController;
@@ -37,6 +38,25 @@ Route::prefix('/admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('login.index');
         Route::post('/check', [AdminController::class, 'check'])->name('login.check');
     });
+    /**
+     * halaman dashboard
+     * /admin/dashboard
+     */
+
+
+
+
+
+
+    /**
+     * Halaman Akun Warga
+     * /admin/akunwarga
+     */
+    Route::prefix('/akunwarga')->group(function () {
+        Route::get('/', [AkunWargaController::class, 'index'])->name('akunwarga.index');
+        Route::get('/data', [AkunWargaController::class, 'dataAkunWarga'])->name('akunwarga.data');
+        Route::get('/kirimwa/{nik}', [AkunWargaController::class, 'kirimWa'])->name('akunwarga.kirimwa');
+    });
 
     /**
      * halaman data warga
@@ -66,7 +86,7 @@ Route::prefix('/admin')->group(function () {
     });
     /**
      * Halaman jabatan 
-     * /pengurusrw/jabatan
+     * /admin/jabatan
      */
     Route::prefix('/jabatan')->group(function () {
         Route::get('/', [JabatanController::class, 'index'])->name('jabatan.index');

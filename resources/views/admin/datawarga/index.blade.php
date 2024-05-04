@@ -121,7 +121,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     //jalankan ajax post untuk hapus
-                    axios.post('datawarga/hapus', {
+                    axios.post('/admin/datawarga/hapus', {
                         'nik': nik
                     }).then(function(response) {
                         if (response.status) {
