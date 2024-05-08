@@ -78,11 +78,8 @@ Route::prefix('/admin')->group(function () {
      */
     Route::prefix('/pengurusrw')->group(function () {
         Route::get('/', [PengurusRwController::class, 'index'])->name('pengurusrw.index');
-        Route::get('/tambah', [PengurusRwController::class, 'tambah'])->name('pengurusrw.tambah');
-        Route::post('/simpan', [PengurusRwController::class, 'simpan'])->name('datawarga.simpan');
-        Route::get('/edit/{id_pengurus_rw}', [PengurusRwController::class, 'formEdit'])->name('datawarga.edit');
-        Route::post('/hapus', [PengurusRwController::class, 'hapus'])->name('datawarga.hapus');
-        Route::get('/detail/{id_pengurus_rw}', [PengurusRwController::class, 'detail'])->name('datawarga.detail');
+        Route::get('/edit/{id_pejabat}', [PengurusRwController::class, 'formEdit'])->name('pengurusrw.edit');
+        Route::post('/simpan', [PengurusRwController::class, 'simpan'])->name('pengurusrw.simpan');
     });
     /**
      * Halaman jabatan 
@@ -93,7 +90,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('/data', [JabatanController::class, 'dataJabatan'])->name('jabatan.data');
         Route::get('/tambah', [JabatanController::class, 'tambah'])->name('jabatan.tambah');
         Route::post('/simpan', [JabatanController::class, 'simpan'])->name('jabatan.simpan');
-        Route::get('/edit/{id_jabatan}', [JabatanController::class, 'formEdit'])->name('jabatan.edit');
+        Route::get('/edit/{id_pejabat}', [JabatanController::class, 'formEdit'])->name('jabatan.edit');
         Route::post('/hapus', [JabatanController::class, 'hapus'])->name('jabatan.hapus');
     });
 });

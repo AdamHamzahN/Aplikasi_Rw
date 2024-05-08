@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\jabatan;
+use App\Models\pejabat;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Yajra\DataTables\DataTables;
@@ -10,16 +10,16 @@ use Yajra\DataTables\DataTables;
 class JabatanController extends Controller
 {
 
-    public $data_jabatan;
+    public $data_pejabat;
     public function __construct()
     {
-        $this->data_jabatan = new jabatan();
+        $this->data_pejabat = new pejabat();
     }
-    //menampilkan halaman pengurusrw.jabatan.index
+    //menampilkan halaman pengurusrw.pejabat.index
     public function index()
     {
         $data = [
-            'daftar_jabatan' => jabatan::all()
+            'daftar_jabatan' => pejabat::all()
         ];
         return view('admin.jabatan.index', $data);
     }
@@ -35,7 +35,7 @@ class JabatanController extends Controller
     public function formedit(Request $request)
     {
         $data = [
-            'daftar_jabatan' => jabatan::where('id_jabatan', $request->id_jabatan)->first()
+            'daftar_jabatan' => pejabat::where('id_pejabat', $request->id_pejabat)->first()
 
         ];
         return view('admin.jabatan.edit', $data);
@@ -49,10 +49,10 @@ class JabatanController extends Controller
             'nama_jabatan' => ['required'],
         ]);
 
-        //cek apakah id_jabatan sudah ada?
-        if (isset($request->id_jabatan)) :
+        //cek apakah id_pejabat sudah ada?
+        if (isset($request->id_pejabat)) :
             //jika ada maka update
-            $update = jabatan::where('id_jabatan', '=', $request->id_jabatan)->update($data);
+            $update = pejabat::where('id_pejabat', '=', $request->id_pejabat)->update($data);
             if ($update) {
                 return redirect()->route('jabatan.index');
             } else {
@@ -60,7 +60,7 @@ class JabatanController extends Controller
             }
         else :
             //jika tidak ada maka masukan data baru
-            $insert = jabatan::create($data);
+            $insert = pejabat::create($data);
             if ($insert) {
                 return redirect()->route('jabatan.index');
             } else {
@@ -72,10 +72,10 @@ class JabatanController extends Controller
     public function hapus(Request $request, Response $response)
     {
         //cek apakah data dengan nik yang di maksud ada di database?
-        $check = jabatan::where('id_jabatan', $request->id_jabatan)->get();
+        $check = pejabat::where('id_pejabat', $request->id_pejabat)->get();
         if ($check->count() > 0) :
             //lakukan proses hapus
-            $hapus = jabatan::where('id_jabatan', $request->id_jabatan)->delete();
+            $hapus = pejabat::where('id_pejabat', $request->id_pejabat)->delete();
             //perikas apakah tudgas berhasil?
             if ($hapus) :
                 //proses berhasil
@@ -99,14 +99,14 @@ class JabatanController extends Controller
         return response()->json($pesan);
     }
 
-    public function dataJabatan(Request $request)
+    public function datajabatan(Request $request)
     {
         /**
          * method ini sbg endpoint API untuk 
          * Datatable serverside
          */
         if ($request->ajax()) :
-            $data = $this->data_jabatan->get();
+            $data = $this->data_pejabat->get();
             
             return DataTables::of($data)
                 ->editColumn('created_at', function ($row) {

@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <input type="hidden" name="id_jabatan" value="{{ $daftar_jabatan->id_jabatan }}">
+                                <input type="text" name="id_pejabat" value="{{ $daftar_jabatan->id_pejabat}}">
                                 <label for="nama_jabatan">Jabatan :</label>
                                 <input type="text" name="nama_jabatan" class="form-control" id="nama_jabatan" value='{{$daftar_jabatan->nama_jabatan}}'required /><br>
                                 @csrf

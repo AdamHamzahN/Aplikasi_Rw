@@ -26,8 +26,8 @@
                                 <label for="jenis_kelamin">Jenis Kelamin :</label>
                                 <select class="form-control" name="jenis_kelamin" id="jenis_kelamin"
                                     value="{{ $warga->jenis_kelamin }}" required>
-                                    <option value='laki-laki'>laki-laki</option>
-                                    <option value='perempuan'>perempuan</option>
+                                    <option value='laki-laki' {{ $warga->jenis_kelamin == 'laki-laki' ? 'selected' : '' }}>laki-laki</option>
+                                    <option value='perempuan' {{ $warga->jenis_kelamin == 'perempuan' ? 'selected' : '' }}>perempuan</option>
                                 </select>
                                 <br>
 

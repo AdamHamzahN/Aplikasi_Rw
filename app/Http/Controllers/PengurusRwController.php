@@ -4,33 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\dataWarga;
 use App\Models\jabatan;
+use App\Models\Pejabat;
 use App\Models\pengurusRw;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class PengurusRwController extends Controller
-{   
+{
     //
     public function index()
     {
         $data = [
-            'pejabats' => pengurusRw::all(),
-            'jabatans' => jabatan::all(),
+            'pejabats' => Pejabat::all(),
             'datawargas' => dataWarga::all()
         ];
 
         return view('admin.pengurusrw.index', $data);
-    }
-
-    public function tambah()
-    {
-        $data = [
-            'datawargas' => dataWarga::all(),
-            'jabatans' => jabatan::all(),
-            'pejabats' => pengurusRw::all()
-        ];
-
-        return view('admin.pengurusrw.tambah', $data);
     }
 
     public function simpan(Request $request)
@@ -38,29 +27,23 @@ class PengurusRwController extends Controller
 
         $data = $request->validate([
             'nik' => ['required'],
-            'id_jabatan' => ['required'],
+            'id_pejabat' => ['required'],
+            'nama_jabatan' => ['required'],
         ]);
-
-        //periksa apakah nik sudah ada?
-        $nikExists = pengurusRw::where('nik', '=', $request->nik)->exists();
-
-        //jika ada maka update
-        if ($nikExists) :
-            $update = pengurusRw::where('nik', '=', $request->nik)->update($data);
-            if ($update) {
-                return redirect()->route('pengurusrw.index');
-            } else {
-                return redirect()->route('pengurusrw.tambah');
-            }
-        //jika tidak tambahkan
-        else :
-            $insert = pengurusRw::create($data);
-            if ($insert) {
-                return redirect()->route('pengurusrw.index');
-            } else {
-                return redirect()->route('pengurusrw.tambah');
-            }
-        endif;
+        $update = Pejabat::where('id_pejabat', '=', $request->id_pejabat)->update($data);
+        if ($update) {
+            return redirect()->route('pengurusrw.index');
+        } else {
+            return redirect()->route('pengurusrw.tambah');
+        }
     }
 
+    public function formedit(Request $request)
+    {
+        $data = [
+            'pejabat' => pejabat::where('id_pejabat', $request->id_pejabat)->first(),
+            'datawarga' => dataWarga::select('nik', 'nama')->get()
+        ];
+        return view('admin.pengurusrw.edit', $data);
+    }
 }

@@ -62,10 +62,10 @@
             columns: [{
                     // data: null,
                     render: function(data, type, row) {
-                        return '<a href="/admin/jabatan/edit/' + row.id_jabatan +
+                        return '<a href="/admin/jabatan/edit/' + row.id_pejabat +
                             '"><button class="btn btn-primary"><i class="bi bi-pencil-square"></i>Edit</button></a>' +
-                            '<a href="/admin/jabatan/hapus/' + row.id_jabatan +
-                            '"><button class="btn btn-danger hpsBtn" attr-id="' + row.id_jabatan +
+                            '<a href="/admin/jabatan/hapus/' + row.id_pejabat +
+                            '"><button class="btn btn-danger hpsBtn" attr-id="' + row.id_pejabat +
                             '"><i class="bi bi-trash"></i>Hapus</button></a>';
                     }
                 },
@@ -87,7 +87,7 @@
             event.preventDefault();
             event.stopImmediatePropagation();
 
-            let id_jabatan = $(this).attr('attr-id');
+            let id_pejabat = $(this).attr('attr-id');
             swal.fire({
                 title: "Apakah ingin menghapus data ini?",
                 showCancelButton: true,
@@ -98,7 +98,7 @@
                 if (result.isConfirmed) {
                     //jalankan ajax post untuk hapus
                     axios.post('/admin/jabatan/hapus', {
-                        'id_jabatan': id_jabatan
+                        'id_pejabat': id_pejabat
                     }).then(function(response) {
                         if (response.status) {
                             // alert(response.data.pesan);
