@@ -61,9 +61,9 @@
             </table>
         </div>
     </div>
-    {{-- @endsection --}}
+    @endsection
 
-    {{-- @section('footer') --}}
+     @section('footer')
 
 
     <script type="module">
@@ -106,6 +106,8 @@
                 },
             ]
         });
+
+        //hapus
         $('.table tbody').on('click', '.hpsBtn', function(event) {
             event.preventDefault();
             event.stopImmediatePropagation();

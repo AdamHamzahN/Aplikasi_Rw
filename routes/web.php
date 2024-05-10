@@ -6,6 +6,7 @@ use App\Http\Controllers\AkunWargaController;
 use App\Http\Controllers\DataWargaController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PengurusRwController;
+use App\Http\Controllers\SuperAdminController;
 use App\Models\dataWarga;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/**
+ * Halaman Super Admin
+ * /Super Admin
+ */
+Route::prefix('/superadmin')->group(function () {
+     Route::get('/', [SuperAdminController::class, 'index'])->name('superadmin.index');
+     Route::get('/data', [SuperAdminController::class, 'dataAdmin'])->name('superadmin.data');
+     Route::get('/tambah', [SuperAdminController::class, 'tambahAdmin'])->name('superadmin.tambah');
+     Route::post('/simpan', [SuperAdminController::class,'simpanAdmin'])->name('superadmin.simpan');
+     Route::get('/edit/{id_admin}', [SuperAdminController::class, 'editAdmin'])->name('superadmin.edit');
+     Route::post('/hapus', [SuperAdminController::class, 'hapusAdmin'])->name('superadmin.hapus');
+
+});
 /**
  * Halaman Admin
  * /admin
@@ -37,6 +52,7 @@ Route::prefix('/admin')->group(function () {
     Route::prefix('/login')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('login.index');
         Route::post('/check', [AdminController::class, 'check'])->name('login.check');
+        
     });
     /**
      * halaman dashboard

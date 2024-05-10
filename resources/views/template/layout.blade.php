@@ -41,12 +41,12 @@
                     <a href="/admin/akunwarga/" class="nav_link {{ Request::is('admin/akunwarga*') ? 'active' : '' }}">
                         <i class="bi bi-person-circle"></i><span class="nav_name">Daftar Akun Warga</span> </a>
 
+                    <a href="/admin/jabatan/" class="nav_link {{ Request::is('admin/jabatan*') ? 'active' : '' }}">
+                        <i class='bi bi-list-check'></i> <span class="nav_name">Daftar Jabatan</span> </a>
+
                     <a href="/admin/pengurusrw/"
                         class="nav_link {{ Request::is('admin/pengurusrw*') ? 'active' : '' }}">
                         <i class='bi bi-person-badge'></i> <span class="nav_name">Daftar Pengurus Rw</span> </a>
-
-                    <a href="/admin/jabatan/" class="nav_link {{ Request::is('admin/jabatan*') ? 'active' : '' }}">
-                        <i class='bi bi-list-check'></i> <span class="nav_name">Daftar Jabatan</span> </a>
 
                     <a href="/admin/logs/" class="nav_link {{ Request::is('admin/logs*') ? 'active' : '' }}">
                         <i class='bi bi-clock-history'></i> <span class="nav_name">Logs</span> </a>
