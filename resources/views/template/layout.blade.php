@@ -53,7 +53,7 @@
 
                 </div>
             </div>
-            <a href="admin/login" class="nav_link"> <i class='bi bi-box-arrow-in-left nav_icon'></i>
+            <a href="/logout" class="nav_link"> <i class='bi bi-box-arrow-in-left nav_icon'></i>
                 <span class="nav_name">Log out</span> </a>
         </nav>
     </div>

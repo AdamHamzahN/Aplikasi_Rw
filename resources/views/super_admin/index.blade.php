@@ -123,12 +123,12 @@
                     }
                 },
                 {
-                    data: 'admin',
-                    name: 'admin',
+                    data: 'username',
+                    name: 'username',
                 },
                 {
-                    data: 'password',
-                    name: 'password',
+                    data: 'role',
+                    name: 'role',
                 },
             ]
         });
@@ -189,11 +189,12 @@
                 $('.btnSimpan').on('click', function(submitEvent) {
                     submitEvent.stopImmediatePropagation();
                     var data = {
-                        'admin': $('#admin').val(),
+                        'username': $('#username').val(),
                         'password': $('#password').val(),
+                        'role': $('#role').val(),
                         '_token': "{{ csrf_token() }}"
                     }
-                    if (data.admin !== '' && data.password !== '') {
+                    if (data.role !=='', data.username !== '' && data.password !== '') {
                         axios.post('{{ url('/superadmin/simpan') }}', data).then(resp => {
                             if (resp.data.status == 'success') {
                                 //tampilkan pop up berhasil;
@@ -249,12 +250,12 @@
                     submitEvent.stopImmediatePropagation();
                     var data = {
                         'id_admin': $('#id_admin').val(),
-                        'admin': $('#admin').val(),
+                        'username': $('#username').val(),
                         'password': $('#password').val(),
-                        'harga': $('#harga').val(),
+                        'role': $('#role').val(),
                         '_token': "{{ csrf_token() }}"
                     }
-                    if (data.admin !== '' && data.admin !== '' && data.password !== '') {
+                    if (data.id_admin!=='' ,data.username !== '' && data.role !== '' && data.password !== '') {
                         axios.post('{{ url('/superadmin/simpan') }}', data).then(resp => {
                             if (resp.data.status == 'success') {
                                 //tampilkan pop up berhasil;

@@ -9,6 +9,6 @@ class logs extends Model
 {
     use HasFactory;
     protected $table = 'logs';
-    protected $primarykey = 'id_logs';
+    protected $primaryKey = 'id_logs';
     public $timestamps = true;
 }

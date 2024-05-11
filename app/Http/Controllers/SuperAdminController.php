@@ -47,7 +47,6 @@ class SuperAdminController extends Controller
 
         $validated = $request->validated();
 
-
         if ($validated) {
             if (isset($request->id_admin)) :
                 //update

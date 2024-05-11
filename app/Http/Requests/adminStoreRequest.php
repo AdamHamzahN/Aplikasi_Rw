@@ -24,15 +24,17 @@ class adminStoreRequest extends FormRequest
         return [
             //
             'id_admin',
-            'admin' => 'required',
+            'username' => 'required',
             'password' => 'required',
+            'role' => 'required',
         ];
     }
     public function messages()
     {
         return [
-            'admin.required' => 'Nama Admin Harus Diisi!',
+            'username.required' => 'Nama username Harus Diisi!',
             'password.required' => 'Password Harus Diisi!',
+            'role.required' => 'Role Harus Diisi!',
         ];
     }
 }

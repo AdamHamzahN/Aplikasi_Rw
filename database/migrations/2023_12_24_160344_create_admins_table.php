@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->integer('id_admin',true,false)->nullable(false);
-            $table->text('admin',50)->nullable(false);
+            $table->text('username',50)->nullable(false);
             $table->text('password',10)->nullable(false);
+            $table->enum('role',['Super Admin','Admin'])->default('Admin');
             $table->timestamps();
             
         });
