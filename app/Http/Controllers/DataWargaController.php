@@ -122,6 +122,14 @@ class DataWargaController extends Controller
         return response()->json($pesan);
     
        }
+
+
+       public function kirimWa(Request $request){
+        $data =[
+            'datawarga'=>dataWarga::where('nik',$request->nik)->first(),
+        ];
+        return view('admin.datawarga.kirim_wa',$data);
+    }
     
        public function dataWarga(Request $request){
         /**

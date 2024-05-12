@@ -36,9 +36,13 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'admins' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admins',
+        ],
+        'wargas' => [
+            'driver' => 'session',
+            'provider' => 'wargas',
         ],
     ],
 
@@ -60,11 +64,20 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     // 'model' => App\Models\User::class,
+        //     'model' => App\Models\akunAdmin::class,
+        // ],
+        'admins' => [
             'driver' => 'eloquent',
-            // 'model' => App\Models\User::class,
             'model' => App\Models\akunAdmin::class,
         ],
+        'wargas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\AkunWarga::class,
+        ],
+        
 
         // 'users' => [
         //     'driver' => 'database',

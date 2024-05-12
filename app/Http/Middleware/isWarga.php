@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class isSuperAdmin
+class isWarga
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class isSuperAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('admins')->check() && Auth::guard('admins')->user()->role === 'Super Admin') {
-            return $next($request);
+        if (!Auth::guard('wargas')->check()) {
+            return redirect()->to('loginwarga', 302);
         } else {
-            return redirect()->to('login', 302);
+            return $next($request);
         }
     }
 }

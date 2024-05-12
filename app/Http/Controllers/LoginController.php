@@ -19,16 +19,16 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($postData)) {
+        if (Auth::guard('admins')->attempt($postData)) {
             $request->session()->regenerate();
 
-            if (Auth::user()->role === 'Admin') {
+            if (Auth::guard('admins')->user()->role === 'Admin') {
                 return response([
                     'success' => true,
                     'redirect_url' => '/admin/datawarga/',
                     'pesan' => 'login berhasil'
                 ]);
-            } else if (Auth::user()->role === 'Super Admin') {
+            } else if (Auth::guard('admins')->user() === 'Super Admin') {
                 return response([
                     'success' => true,
                     'redirect_url' => '/superadmin',
@@ -41,7 +41,7 @@ class LoginController extends Controller
     }
     public function logout()
     {
-        Auth::logout();
+        Auth::guard('admins')->logout();
         return redirect()->to('/login',302);
     }
 }

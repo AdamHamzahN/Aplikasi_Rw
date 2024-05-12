@@ -12,12 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::unprepared('
-            CREATE TRIGGER TRakunwargainsert AFTER INSERT ON data_wargas FOR EACH ROW
-            BEGIN
-                INSERT INTO akun_wargas (nik,password) VALUES (new.nik,SUBSTRING(MD5(RAND()) FROM 1 FOR 8));
-            END;'
-        );
+        // DB::unprepared('
+        //     // CREATE TRIGGER TRakunwargainsert AFTER INSERT ON data_wargas FOR EACH ROW
+        //     // BEGIN
+        //     //     INSERT INTO akun_wargas (nik,password) VALUES (new.nik,SUBSTRING(MD5(RAND()) FROM 1 FOR 8));
+        //     // END;'
+        // );
     }
 
     /**
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        DB::unprepared('DROP TRIGGER "TRakunnwargainsert"');
     }
 };

@@ -17,10 +17,10 @@
                             Nama
                         </th>
                         <th>
-                            Nik
+                           Username
                         </th>
                         <th>
-                            Password
+                            Dibuat Tanggal
                         </th>
                         <th>
                             Aksi
@@ -74,8 +74,8 @@
                     }
                 },
                 {
-                    data: 'password',
-                    name: 'password',
+                    data: 'created_at',
+                    name: 'created_at',
                 },
                 {
                     render: function(data, type, row) {

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('akun_wargas', function (Blueprint $table) {
             $table->integer('id_akun_warga', true)->nullable(false);
-            $table->string('nik',20,false, false)->index('nik');
+            $table->string('username',20,false, false)->index('usernameNik');
             $table->text('password',10)->nullable(false);
+            $table->timestamps();
 
-            $table->foreign('nik')->on('data_wargas')
+            $table->foreign('username')->on('data_wargas')
                 ->references('nik')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');

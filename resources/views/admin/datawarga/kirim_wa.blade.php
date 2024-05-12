@@ -14,10 +14,6 @@
                 <label for="kontak">kontak</label>
                 <input class="form-control"type="number" name="kontak" id="kontak" value="{{ $datawarga->kontak }}" readonly>
             </div>
-            <div class="form-group">
-                <label for="password">password</label>
-                <input class="form-control"type="text" name="password" id="password" value="{{ $akun->password }}" readonly>
-            </div>
             <br>
             <div class="text mx-auto d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary btn-lg">Kirim</button>
@@ -30,7 +26,7 @@
     function kirimPesan() {
         var nomor = `62${kontak.value}`;
         const pesan =
-            `Silahkan Aktivasi akun anda di Aplikasi Rukun Warga dengan menekan link AplikasiRW.com \nMasukkan username dan password anda \nUsername = ${nik.value} \nPassword = ${password.value}`
+            `Silahkan Aktivasi akun anda di Aplikasi Rukun Warga dengan salin username lalu tekan link AplikasiRW.com \nMasukkan username anda \nUsername = ${nik.value} \n`
         const urlWhatsapp =
             `http://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
 

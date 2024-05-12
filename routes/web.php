@@ -6,8 +6,11 @@ use App\Http\Controllers\AkunWargaController;
 use App\Http\Controllers\DataWargaController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LoginWargaController;
 use App\Http\Controllers\PengurusRwController;
+use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\WargaController;
 use App\Models\dataWarga;
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +41,8 @@ Route::prefix('/login')->group(function () {
 /**
  * Route untuk Logout
  */
-Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
 /**
  * Halaman Super Admin
  * /Super Admin
@@ -51,6 +55,7 @@ Route::prefix('/superadmin')->middleware('isSuperAdmin')->group(function () {
     Route::get('/edit/{id_admin}', [SuperAdminController::class, 'editAdmin'])->name('superadmin.edit');
     Route::post('/hapus', [SuperAdminController::class, 'hapusAdmin'])->name('superadmin.hapus');
 });
+
 /**
  * Halaman Admin
  * /admin
@@ -74,7 +79,7 @@ Route::prefix('/admin')->middleware('isAdmin')->group(function () {
     Route::prefix('/akunwarga')->group(function () {
         Route::get('/', [AkunWargaController::class, 'index'])->name('akunwarga.index');
         Route::get('/data', [AkunWargaController::class, 'dataAkunWarga'])->name('akunwarga.data');
-        Route::get('/kirimwa/{nik}', [AkunWargaController::class, 'kirimWa'])->name('akunwarga.kirimwa');
+        // Route::get('/kirimwa/{nik}', [AkunWargaController::class, 'kirimWa'])->name('akunwarga.kirimwa');
     });
 
     /**
@@ -89,6 +94,7 @@ Route::prefix('/admin')->middleware('isAdmin')->group(function () {
         Route::get('/edit/{nik}', [DataWargaController::class, 'formEdit'])->name('datawarga.edit');
         Route::post('/hapus', [DataWargaController::class, 'hapus'])->name('datawarga.hapus');
         Route::get('/detail/{nik}', [DataWargaController::class, 'detail'])->name('datawarga.detail');
+        Route::get('/kirimwa/{nik}', [DataWargaController::class, 'kirimWa'])->name('akunwarga.kirimwa');
     });
 
     /**
@@ -118,4 +124,29 @@ Route::prefix('/admin')->middleware('isAdmin')->group(function () {
      * Halaman logs 
      * /admin/logs
      */
+});
+
+
+/**
+ * Halaman Login Warga
+ * /loginwarga
+ */
+
+Route::prefix('/loginwarga')->group(function () {
+    Route::get('/', [LoginWargaController::class, 'index'])->name('loginwarga');
+    Route::post('/check', [LoginWargaController::class, 'check'])->name('loginwarga.check');
+});
+
+Route::prefix('registrasi')->group(function(){
+     Route::get('/', [RegistrasiController::class, 'index'])->name('registrasi');
+     Route::post('/check', [RegistrasiController::class, 'checkUsername'])->name('registrasi.check');
+     Route::get('/daftar/{nik}', [RegistrasiController::class, 'daftar'])->name('registrasi.daftar');
+     Route::post('/simpan', [RegistrasiController::class, 'simpan'])->name('registrasi.simpan');
+});
+/**
+ * Halaman Warga
+ * /warga
+ */
+Route::prefix('/warga')->middleware('isWarga')->group(function () {
+    Route::get('/{$nik}', [WargaController::class, 'index'])->name('warga.index');
 });

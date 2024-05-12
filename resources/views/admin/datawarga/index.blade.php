@@ -61,11 +61,26 @@
             </table>
         </div>
     </div>
-    @endsection
 
-     @section('footer')
+    {{-- Modal --}}
+    <div class="modal fade" id="modalForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Kirim Ke Whatsapp</h5>
 
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
 
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('footer')
     <script type="module">
         var table = $('.DataTable').DataTable({
             responsive: true,
@@ -81,7 +96,8 @@
                             '"><button class="btn btn-primary"><i class="bi bi-pencil-square"></i>Edit</button></a>' +
                             '<a href="/admin/datawarga/hapus/' + row.nik +
                             '"><button class="btn btn-danger hpsBtn" attr-id="' + row.nik +
-                            '"><i class="bi bi-trash"></i>Hapus</button></a>';
+                            '"><i class="bi bi-trash"></i>Hapus</button></a>' +
+                            "<btn class='btn btn-primary kirimWa' data-bs-toggle='modal' data-bs-target='#modalForm' attr-href='{!! url('/admin/datawarga/kirimwa/"+ row.nik+"') !!}'><i class='bi bi-whatsapp'></i> Kirim Wa</btn>";
                     }
                 },
                 {
@@ -147,6 +163,28 @@
                 }
             })
 
-        })
+        });
+
+        // Kirim Wa
+        $('.DataTable tbody').on('click', '.kirimWa', function(event) {
+            let modalForm = document.getElementById('modalForm');
+            modalForm.addEventListener('shown.bs.modal', function(event) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                const link = event.relatedTarget.getAttribute('attr-href');
+
+                axios.get(link).then(response => {
+                    $('#modalForm .modal-body').html(response.data);
+                });
+
+                modalForm.addEventListener('hidden.bs.modal', function(closeEvent) {
+                    closeEvent.preventDefault();
+                    closeEvent.stopImmediatePropagation();
+
+                    $('#modalForm').removeData();
+                });
+            });
+        });
     </script>
+
 @endsection
