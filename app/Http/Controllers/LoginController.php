@@ -22,18 +22,23 @@ class LoginController extends Controller
         if (Auth::guard('admins')->attempt($postData)) {
             $request->session()->regenerate();
 
-            if (Auth::guard('admins')->user()->role === 'Admin') {
+            if (Auth::guard('admins')->user()->role == 'Admin') {
                 return response([
                     'success' => true,
                     'redirect_url' => '/admin/datawarga/',
                     'pesan' => 'login berhasil'
                 ]);
-            } else if (Auth::guard('admins')->user() === 'Super Admin') {
+            } else if (Auth::guard('admins')->user()->role == 'Super Admin') {
                 return response([
                     'success' => true,
                     'redirect_url' => '/superadmin',
                     'pesan' => 'login berhasil'
                 ]);
+            } else {
+                return response([
+                    'success' => false,
+                    'pesan =>Anda tidak memiliki Akses'
+                ], 401);
             }
         } else {
             return response(['success' => false], 401);
@@ -42,6 +47,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::guard('admins')->logout();
-        return redirect()->to('/login',302);
+        return redirect()->to('/login', 302);
     }
 }

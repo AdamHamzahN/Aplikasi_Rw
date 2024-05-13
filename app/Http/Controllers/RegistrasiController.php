@@ -27,9 +27,10 @@ class RegistrasiController extends Controller
             'password' => ['required'],
         ]);
 
-        $checkUsername =  dataWarga::where('nik', '=', $request->username)->exists();
+        $checkNik =  dataWarga::where('nik', '=', $request->username)->exists();
+        $checkUsername =  akunWarga::where('username', '=', $request->username)->exists();
 
-        if ($checkUsername) {
+        if ($checkNik && $checkUsername) {
             $insert = akunWarga::create($data);
             if ($insert) {
                 return response([

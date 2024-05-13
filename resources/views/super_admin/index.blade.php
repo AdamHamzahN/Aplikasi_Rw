@@ -64,7 +64,7 @@
                                     Admin
                                 </th>
                                 <th>
-                                    Password
+                                    Role
                                 </th>
                             </tr>
                         </thead>
