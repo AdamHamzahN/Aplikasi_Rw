@@ -17,8 +17,8 @@ class RegistrasiController extends Controller
     {
         $data = [
             'nik' => $request->nik
-            ];
-        return view('warga.daftar',$data);
+        ];
+        return view('warga.daftar', $data);
     }
     public function simpan(Request $request)
     {
@@ -30,7 +30,7 @@ class RegistrasiController extends Controller
         $checkNik =  dataWarga::where('nik', '=', $request->username)->exists();
         $checkUsername =  akunWarga::where('username', '=', $request->username)->exists();
 
-        if ($checkNik && $checkUsername) {
+        if (!$checkUsername && $checkNik) {
             $insert = akunWarga::create($data);
             if ($insert) {
                 return response([
@@ -39,12 +39,15 @@ class RegistrasiController extends Controller
                 ]);
             } else {
                 return response([
-                    'success' => true,
+                    'success' => false,
                     'pesan' => 'Aktivasi Gagal'
                 ]);
             }
-        }else{
-            return redirect()->route('registrasi.daftar');
+        } else {
+            return response([
+                'success' => false,
+                'pesan' => 'mohon masukan username sesuai yang disalin!'
+            ]);
         }
     }
 

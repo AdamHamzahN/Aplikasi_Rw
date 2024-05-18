@@ -31,21 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($daftar_jabatan as $jabatan)
-                        <tr>
-                            {{-- <td>
-                                <a href="{{ url('/admin/jabatan/edit/' . $jabatan->id_jabatan) }}">
-                                    <button class="btn btn-primary"><i class="bi bi-pencil-square"></i>Edit</button>
-                                </a>
-                                <button class="btn btn-danger hpsBtn" attr-id="{{ $jabatan->id_jabatan }}"><i
-                                        class="bi bi-trash "></i>Hapus</button>
-                            </td>
-                            <td>{{ $jabatan->id_jabatan }}</td>
-                            <td>{{ $jabatan->nama_jabatan }}</td>
-                            <td>{{ $jabatan->created_at }}</td>
-                            <td>{{ $jabatan->updated_at }}</td> --}}
-                        </tr>
-                    @endforeach
+                  
                 </tbody>
             </table>
         </div>
@@ -121,6 +107,6 @@
                 }
             })
 
-        })
+        });
     </script>
 @endsection

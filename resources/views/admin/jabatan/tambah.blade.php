@@ -17,7 +17,6 @@
                                 <label for="nama_jabatan">Jabatan :</label>
                                 <input type="text" name="nama_jabatan" class="form-control" id="nama_jabatan" placeholder="masukan jabatan baru" required /><br>
                                 @csrf
-
                             </div>
                         </div>
 

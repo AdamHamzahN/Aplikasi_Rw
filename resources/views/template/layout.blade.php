@@ -12,7 +12,12 @@
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"> --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+    <style>
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
     <title>Data Warga</title>
 </head>
 
@@ -62,5 +67,20 @@
     </div>
 </body>
 <footer>
+    <script>
+         function previewImage() {
+            const image = document.querySelector('#foto');
+            const preview = document.querySelector('.img-preview');
+
+            preview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                preview.src = oFREvent.target.result;
+            }
+        };
+    </script>
     @yield('footer')
 </footer>

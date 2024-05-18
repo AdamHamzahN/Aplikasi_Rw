@@ -11,6 +11,6 @@ class WargaController extends Controller
         $data = [
             'data_warga'=>dataWarga::where('nik', $request->nik)->first()
         ];
-        return view('warga.index',$data);
+        return view('warga.home',$data);
     }
 }

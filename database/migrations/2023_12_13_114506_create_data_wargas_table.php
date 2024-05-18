@@ -22,6 +22,7 @@ return new class extends Migration
         $table->string('alamat', 200)->nullable(false);
         $table->string('rt', 3,false,false)->nullable(false);
         $table->string('kontak', 20)->nullable(false);
+        $table->string('foto')->nullable(false);
         $table->timestamps();
 
     });

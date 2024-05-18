@@ -7,6 +7,7 @@ use App\Http\Controllers\DataWargaController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LoginWargaController;
+use App\Http\Controllers\PagePejabatControlller;
 use App\Http\Controllers\PengurusRwController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\SuperAdminController;
@@ -137,16 +138,19 @@ Route::prefix('/loginwarga')->group(function () {
     Route::post('/check', [LoginWargaController::class, 'check'])->name('loginwarga.check');
 });
 
-Route::prefix('registrasi')->group(function(){
-     Route::get('/', [RegistrasiController::class, 'index'])->name('registrasi');
-     Route::post('/check', [RegistrasiController::class, 'checkUsername'])->name('registrasi.check');
-     Route::get('/daftar/{nik}', [RegistrasiController::class, 'daftar'])->name('registrasi.daftar');
-     Route::post('/simpan', [RegistrasiController::class, 'simpan'])->name('registrasi.simpan');
+Route::prefix('registrasi')->group(function () {
+    Route::get('/', [RegistrasiController::class, 'index'])->name('registrasi');
+    Route::post('/check', [RegistrasiController::class, 'checkUsername'])->name('registrasi.check');
+    Route::get('/daftar/{nik}', [RegistrasiController::class, 'daftar'])->name('registrasi.daftar');
+    Route::post('/simpan', [RegistrasiController::class, 'simpan'])->name('registrasi.simpan');
 });
 /**
  * Halaman Warga
  * /warga
  */
 Route::prefix('/warga')->middleware('isWarga')->group(function () {
-    Route::get('/{$nik}', [WargaController::class, 'index'])->name('warga.index');
+    Route::prefix('/{nik}')->group(function () {
+        Route::get('/', [WargaController::class, 'index'])->name('warga.index');
+        Route::get('/pejabat',[PagePejabatControlller::class,'index'])->name('warga.pejabat');
+    });
 });

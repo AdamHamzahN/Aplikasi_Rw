@@ -20,7 +20,8 @@ class dataWarga extends Model
         'pekerjaan', 
         'alamat', 
         'rt', 
-        'kontak'
+        'kontak',
+        'foto'
     ];
     public $timestamps= true;
 }

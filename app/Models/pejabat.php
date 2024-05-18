@@ -9,7 +9,7 @@ class Pejabat extends Model
 {
     use HasFactory;
     protected $table = 'pejabats';
-    protected $primaryKey = ['id_pejabat'];
+    protected $primaryKey = 'id_pejabat';
     protected $fillable = ['nama_jabatan','nik'];
     public $timestamps = true;
 }

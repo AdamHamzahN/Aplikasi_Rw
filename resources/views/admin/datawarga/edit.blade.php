@@ -12,7 +12,8 @@
                     <h1>Edit Data Warga dengan Nama</h1><br>
                     <h1>{{ $warga->nama }}</h1>
                 </div>
-                <form method="post" name="formTambah" action="{{ url('/admin/datawarga/simpan') }} ">
+                <form method="post" name="formTambah"
+                    action="{{ url('/admin/datawarga/simpan') }} "enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="col-lg-12">
                             <div class="form-group">
@@ -26,8 +27,10 @@
                                 <label for="jenis_kelamin">Jenis Kelamin :</label>
                                 <select class="form-control" name="jenis_kelamin" id="jenis_kelamin"
                                     value="{{ $warga->jenis_kelamin }}" required>
-                                    <option value='laki-laki' {{ $warga->jenis_kelamin == 'laki-laki' ? 'selected' : '' }}>laki-laki</option>
-                                    <option value='perempuan' {{ $warga->jenis_kelamin == 'perempuan' ? 'selected' : '' }}>perempuan</option>
+                                    <option value='laki-laki' {{ $warga->jenis_kelamin == 'laki-laki' ? 'selected' : '' }}>
+                                        laki-laki</option>
+                                    <option value='perempuan' {{ $warga->jenis_kelamin == 'perempuan' ? 'selected' : '' }}>
+                                        perempuan</option>
                                 </select>
                                 <br>
 
@@ -71,6 +74,15 @@
                                 <label for="kontak">kontak :</label>
                                 <input type="number" name="kontak" id="kontak" class="form-control"
                                     value="{{ $warga->kontak }}" required /><br>
+                                <hr>
+                                <h3>Foto</h3>
+                                <input type="hidden" name="fotoLama" value="{{ $warga->foto }}">
+                                <label for="foto">Foto</label>
+                                <input type="file" name="foto" id="foto" class="form-control"
+                                    onchange="previewImage()" /><br>
+
+                                <img src="{{ asset('storage/' . $warga->foto) }}"
+                                    class="img-preview img-fluid mb-3 col-sm-3">
                                 @csrf
 
                             </div>
@@ -84,4 +96,6 @@
             </div>
         </div>
     </div>
+@endsection
+@section('footer')
 @endsection

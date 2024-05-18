@@ -10,7 +10,8 @@
                 <div class="card-header text-center">
                     <h1>Tambah Data Warga</h1><br>
                 </div>
-                <form method="post" name="formTambah" action="{{ url('/admin/datawarga/simpan') }} ">
+                <form method="post" name="formTambah" action="{{ url('/admin/datawarga/simpan') }} "
+                    enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="col-lg-12">
                             <div class="form-group">
@@ -36,7 +37,8 @@
                                     required /><br>
 
                                 <label for="tanggal_lahir">Tanggal Lahir :</label>
-                                <input type="date" name="tanggal_lahir" id="tanggal_lahir"class="form-control" required /><br>
+                                <input type="date" name="tanggal_lahir" id="tanggal_lahir"class="form-control"
+                                    required /><br>
 
                                 <label for="agama">Agama :</label>
                                 <select class="form-control" name="agama" id="agama" required>
@@ -65,6 +67,12 @@
                                 <hr>
                                 <label for="kontak">kontak :</label>
                                 <input type="number" name="kontak" id="kontak" class="form-control" required /><br>
+                                <hr>
+                                <h3>Foto</h3>
+                                <label for="foto">Foto</label>
+                                <input type="file" name="foto" id="foto" class="form-control" required
+                                    onchange="previewImage()" /><br>
+                                <img class="img-preview img-fluid mb-3 col-sm-3">
                                 @csrf
 
                             </div>
@@ -78,4 +86,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('footer')
+
 @endsection
